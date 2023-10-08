@@ -4,7 +4,7 @@
 # Copyright (C) 2020-2021 Adithya R.
 
 SECONDS=0 # builtin bash timer
-ZIPNAME="topaz-$(date '+%Y%m%d-%H%M').zip"
+ZIPNAME="RN11-$(date '+%Y%m%d-%H%M').zip"
 TC_DIR="$(pwd)/tc/clang-r450784e"
 AK3_DIR="$(pwd)/android/AnyKernel3"
 DEFCONFIG="vendor/spes-perf_defconfig"
@@ -15,6 +15,8 @@ if test -z "$(git rev-parse --show-cdup 2>/dev/null)" &&
 fi
 
 export PATH="$TC_DIR/bin:$PATH"
+export KBUILD_BUILD_USER=builder
+export KBUILD_BUILD_HOST=mobx-ci-task-miui
 
 if ! [ -d "$TC_DIR" ]; then
 	echo "AOSP clang not found! Cloning to $TC_DIR..."
