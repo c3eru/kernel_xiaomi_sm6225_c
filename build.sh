@@ -17,6 +17,7 @@ fi
 export PATH="$TC_DIR/bin:$PATH"
 export KBUILD_BUILD_USER=builder
 export KBUILD_BUILD_HOST=mobx-ci-task-miui
+export CONFIG_LOCALVERSION=-perf
 
 if ! [ -d "$TC_DIR" ]; then
 	echo "AOSP clang not found! Cloning to $TC_DIR..."
