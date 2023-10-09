@@ -31,10 +31,8 @@ jobs:
       - name: Git variables
         run: |
           HEAD="$(git rev-parse HEAD)"
-          HEAD_COMMIT="https://github.com/c3eru/kernel_xiaomi_sm6225_c/tree/news/commit/$HEAD"
           COMMIT_POINT="$(git log --pretty=format:'%h: %s' -1)"
           echo "COMMIT_POINT=${COMMIT_POINT}" >> $GITHUB_ENV
-          echo "HEAD_COMMIT=${HEAD_COMMIT}" >> $GITHUB_ENV
 
       - name: Upload build artifact
         uses: actions/upload-artifact@main
@@ -49,6 +47,5 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           document: ${{ env.ZIPNAME }}
           message: |
-             Build date: ${{ env.BUILD_DATE }}
-             Latest commit: ${{ env.COMMIT_POINT }} [${{ env.HEAD_COMMIT }}]
-             Download: ${{ env.DL_URL }}
+             Build date: ⏰ ${{ env.BUILD_DATE }}
+             Latest commit: 🎁 ${{ env.COMMIT_POINT }}
