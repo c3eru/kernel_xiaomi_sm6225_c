@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Compile script for topaz Kernel
+# Compile script for Custom Kernel
 # Copyright (C) 2020-2021 Adithya R.
 
 SECONDS=0 # builtin bash timer
@@ -58,7 +58,7 @@ if [ -f "$kernel" ]; then
 	echo -e "\nKernel compiled succesfully! Zipping up...\n"
 	if [ -d "$AK3_DIR" ]; then
 		cp -r $AK3_DIR AnyKernel3
-	elif ! git clone -q https://github.com/CHRISL7/AnyKernel3 -b master; then
+	elif ! git clone -q https://github.com/c3eru/AnyKernel3_spes -b master; then
 		echo -e "\nAnyKernel3 repo not found locally and couldn't clone from GitHub! Aborting..."
 		exit 1
 	fi
