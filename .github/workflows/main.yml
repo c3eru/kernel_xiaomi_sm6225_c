@@ -31,7 +31,7 @@ jobs:
       - name: Git variables
         run: |
           HEAD="$(git rev-parse HEAD)"
-          COMMIT_POINT="$(git log --pretty=format:'%h: %s' -1)"
+          COMMIT_POINT="$(git log --pretty=format:'%s' -1"
           echo "COMMIT_POINT=${COMMIT_POINT}" >> $GITHUB_ENV
 
       - name: Upload build artifact
@@ -47,5 +47,5 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           document: ${{ env.ZIPNAME }}
           message: |
-             Build date: ⏰ ${{ env.BUILD_DATE }}
-             Latest commit: 🎁 ${{ env.COMMIT_POINT }}
+             ⏰ Build date: ${{ env.BUILD_DATE }}
+             🎁 Latest commit: ${{ env.COMMIT_POINT }}
