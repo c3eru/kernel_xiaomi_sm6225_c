@@ -337,7 +337,6 @@ static void show_vma_header_prefix(struct seq_file *m,
 				   vm_flags_t flags, unsigned long long pgoff,
 				   dev_t dev, unsigned long ino)
 {
-<<<<<<< HEAD
 	seq_setwidth(m, 25 + sizeof(void *) * 6 - 1);
 	seq_put_hex_ll(m, NULL, start, 8);
 	seq_put_hex_ll(m, "-", end, 8);
@@ -351,7 +350,6 @@ static void show_vma_header_prefix(struct seq_file *m,
 	seq_put_hex_ll(m, ":", MINOR(dev), 2);
 	seq_put_decimal_ull(m, " ", ino);
 	seq_putc(m, ' ');
-=======
 	size_t len;
 	char *out;
 
@@ -395,7 +393,6 @@ static void show_vma_header_prefix(struct seq_file *m,
 
 	m->count += len;
 	return 0;
->>>>>>> 18506a359ab0 (mm: Fix OOM crash by limiting memory allocation)
 }
 
 static void
@@ -824,8 +821,6 @@ static int smaps_hugetlb_range(pte_t *pte, unsigned long hmask,
 static void smap_gather_stats(struct vm_area_struct *vma,
 			     struct mem_size_stats *mss)
 {
-<<<<<<< HEAD
-=======
 }
 
 static int show_smap(struct seq_file *m, void *v, int is_pid)
@@ -834,7 +829,6 @@ static int show_smap(struct seq_file *m, void *v, int is_pid)
 	struct vm_area_struct *vma = v;
 	struct mem_size_stats mss_stack;
 	struct mem_size_stats *mss;
->>>>>>> 18506a359ab0 (mm: Fix OOM crash by limiting memory allocation)
 	struct mm_walk smaps_walk = {
 		.pmd_entry = smaps_pte_range,
 #ifdef CONFIG_HUGETLB_PAGE
@@ -918,7 +912,6 @@ static int show_smap(struct seq_file *m, void *v)
 		seq_putc(m, '\n');
 	}
 
-<<<<<<< HEAD
 	SEQ_PUT_DEC("Size:           ", vma->vm_end - vma->vm_start);
 	SEQ_PUT_DEC(" kB\nKernelPageSize: ", vma_kernel_pagesize(vma));
 	SEQ_PUT_DEC(" kB\nMMUPageSize:    ", vma_mmu_pagesize(vma));
@@ -932,7 +925,6 @@ static int show_smap(struct seq_file *m, void *v)
 		seq_printf(m, "ProtectionKey:  %8u\n", vma_pkey(vma));
 	show_smap_vma_flags(m, vma);
 
-=======
 	if (!rollup_mode)
 		seq_printf(m,
 			   "Size:           %8lu kB\n"
@@ -982,8 +974,6 @@ static int show_smap(struct seq_file *m, void *v)
 		arch_show_smap(m, vma);
 		show_smap_vma_flags(m, vma);
 	}
->>>>>>> 18506a359ab0 (mm: Fix OOM crash by limiting memory allocation)
-	m_cache_vma(m, vma);
 
 	return 0;
 }
