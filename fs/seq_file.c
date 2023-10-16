@@ -692,16 +692,8 @@ void seq_put_decimal_ull(struct seq_file *m, const char *delimiter,
 	if (m->count + 1 >= m->size)
 		goto overflow;
 
-<<<<<<< HEAD
 	len = num_to_str(m->buf + m->count, m->size - m->count, num, width);
-=======
-	if (num < 10) {
-		m->buf[m->count++] = num + '0';
-		return;
-	}
-
 	len = num_to_str(m->buf + m->count, m->size - m->count, num);
->>>>>>> 18506a359ab0 (mm: Fix OOM crash by limiting memory allocation)
 	if (!len)
 		goto overflow;
 
